@@ -1,0 +1,21 @@
+import os
+import sqlite3
+
+conn = sqlite3.connect("https://github.com/MoisesFRibeiro/GERENCIAMENTO_PASSAGENS.git")
+
+cursor =  conn.cursor()
+
+dados_Tabela_passageiros = [
+    (1 "maximiller_pena", "juiz de fora", "mg" ),
+    (2 "rosa_maria", "juiz de fora", "mg"),
+    (3 "ederson", "juiz de fora", "mg"),
+    (4 "sulamita", "matias barbosa", "mg"),
+    (5 "carolina","bicas", "mg"),
+    (6 "jose", "ubá", "mg"),
+    (7 "carlos", "goianá", "mg")
+]
+cursor.executemany(
+    "INSERT INTO tabela_passageiros (id_pasageiro, nome, cidade, estado) VALUES (?, ?)", dados_Tabela_passageiros)
+conn.commit()
+
+conn.close()
